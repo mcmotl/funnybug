@@ -8,6 +8,9 @@
     div{ width: 900px; height: 300px; margin: 0 auto; border: 1px solid #000; background-color: #fff;
     transition: all 1s;
     }
+    @-ms-viewport {
+      width:1000px;
+    }
     @media screen and (max-width:920px) {
         div{
             width: 300px;
@@ -17,7 +20,7 @@
     </style>
 </head>
 <body>
-<!--ie10+ 启动页面（可点击链接刷新本页），会错误获取到media中的内容，然后经过动画恢复，原因不明-->
+<!--ie10+ 启动页面（可点击链接刷新本页），会错误获取到media中的内容，然后经过动画恢复，原因不明，可能是media判断上出了问题， 多次尝试发现加一个判断  and (min-width: 1px) 就不会再有此错误了。 猜测是ie在初始化的时候width = 0 ，导致的这个问题，所以在写ie media 宽度的时候至少给一个大于0的 min值-->
 <div>
     <a href="">click me</a>
 </div>
